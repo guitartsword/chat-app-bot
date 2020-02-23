@@ -25,7 +25,6 @@ const handleStock = async () => {
             message: botMessage,
             channel
         });
-        console.log(payload);
         ch.sendToQueue(RABBITMQ_QUEUE, Buffer.from(payload));
     }, {
         noAck: true
