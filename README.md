@@ -26,3 +26,15 @@ RABBITMQ_QUEUE=queue_name
 ## Usage Instructions
 
 Now your chat app has a bot!
+
+## want to use this bot?
+
+Just send a json with the following parameters
+
+```ts
+interface BotContent{
+    stockCode: string
+    username: string
+    channel?: string
+}
+```
