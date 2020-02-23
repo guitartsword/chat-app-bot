@@ -3,12 +3,13 @@ const axios = require('axios');
 
 const RABBITMQ_URL = process.env.RABBITMQ_URL;
 const RABBITMQ_QUEUE = process.env.RABBITMQ_QUEUE;
+const RABBITMQ_STOCKBOT_QUEUE = process.env.RABBITMQ_STOCKBOT_QUEUE;
 
 const handleStock = async () => {
     const conn = await amqp.connect(RABBITMQ_URL);
     const ch = await conn.createChannel();
     ch.assertQueue(RABBITMQ_QUEUE, { durable: false, });
-    ch.consume('stock_bot', async ({content}) => {
+    ch.consume(RABBITMQ_STOCKBOT_QUEUE, async ({content}) => {
         const {
             stockCode='',
             username,

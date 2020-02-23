@@ -22,6 +22,7 @@ These are the following variables you must configure
 ```sh
 RABBITMQ_URL=amqp://rabbitmqurl
 RABBITMQ_QUEUE=queue_name
+RABBITMQ_STOCKBOT_QUEUE=stock_queue_name
 ```
 
 ## Usage Instructions
