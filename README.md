@@ -13,7 +13,7 @@ This is a bot using RabbitMQ
 2. Open the terminal inside the recently cloned repository
 3. Create a .env file in the root project folder
 4. `npm install`
-5. `npm start`
+5. `npm run dev`
 
 ### Environmental Variables
 

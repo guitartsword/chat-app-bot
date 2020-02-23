@@ -5,7 +5,8 @@
   "main": "bot.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node -r dotenv/config bot"
+    "start": "node bot",
+    "dev": "node -r dot/env bot"
   },
   "author": "",
   "license": "ISC",
