@@ -10,12 +10,15 @@ const handleStock = async () => {
     ch.assertQueue(RABBITMQ_QUEUE, { durable: false, });
     ch.consume('stock_bot', async ({content}) => {
         const {
-            stockCode,
+            stockCode='',
             username,
             channel = 'default'
         } = JSON.parse(content);
+        if(!stockCode) {
+            return;
+        }
         const csv = await axios.get(`https://stooq.com/q/l/?s=${stockCode}&f=sd2t2ohlcv&h&e=csv`);
-        const close = csv.data.split(/\r?\n/)[1].split(',')[6];
+        close = csv.data.split(/\r?\n/)[1].split(',')[6];
         const botMessage = `${stockCode.toUpperCase()} quote is $${close} per share`;
         const payload = JSON.stringify({
             user: username,
