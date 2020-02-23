@@ -5,7 +5,7 @@ This is a bot using RabbitMQ
 
 - Node installed
 - Have one RabbitMQ instance create
-- RabbitMQ should have a query named: `stock_bot`
+- RabbitMQ should have a dedicated queue that handles bot message
 
 ## Installation Instructions
 
