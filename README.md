@@ -4,7 +4,8 @@ This is a bot using RabbitMQ
 ## Pre requirements
 
 - Node installed
-- Have one RabbitMQ instance create and at least one queue
+- Have one RabbitMQ instance create
+- RabbitMQ should have a query named: `stock_bot`
 
 ## Installation Instructions
 
