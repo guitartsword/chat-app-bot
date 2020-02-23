@@ -1,3 +1,5 @@
+const http = require('http');
+
 const amqp = require('amqplib');
 const axios = require('axios');
 
@@ -9,13 +11,13 @@ const handleStock = async () => {
     const conn = await amqp.connect(RABBITMQ_URL);
     const ch = await conn.createChannel();
     ch.assertQueue(RABBITMQ_QUEUE, { durable: false, });
-    ch.consume(RABBITMQ_STOCKBOT_QUEUE, async ({content}) => {
+    ch.consume(RABBITMQ_STOCKBOT_QUEUE, async ({ content }) => {
         const {
-            stockCode='',
+            stockCode = '',
             username,
             channel = 'default'
         } = JSON.parse(content);
-        if(!stockCode) {
+        if (!stockCode) {
             return;
         }
         const csv = await axios.get(`https://stooq.com/q/l/?s=${stockCode}&f=sd2t2ohlcv&h&e=csv`);
@@ -32,3 +34,9 @@ const handleStock = async () => {
     });
 }
 handleStock();
+
+const server = http.createServer((function (request, response) {
+    response.writeHead(200, { 'Content-Type': 'text/plain' });
+    response.end('AMPQ Server up\n');
+}));
+server.listen(8000);
