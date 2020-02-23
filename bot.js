@@ -39,4 +39,4 @@ const server = http.createServer((function (request, response) {
     response.writeHead(200, { 'Content-Type': 'text/plain' });
     response.end('AMPQ Server up\n');
 }));
-server.listen(8000);
+server.listen(process.env.PORT || 8000);
