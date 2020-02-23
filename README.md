@@ -18,8 +18,10 @@ This is a bot using RabbitMQ
 ### Environmental Variables
 
 These are the following variables you must configure
+USE THE SAME ENVIRONMENTAL RABBITMQ VARIABLES FOR THE CHAT APP
 
 ```sh
+PORT=8000
 RABBITMQ_URL=amqp://rabbitmqurl
 RABBITMQ_QUEUE=queue_name
 RABBITMQ_STOCKBOT_QUEUE=stock_queue_name
